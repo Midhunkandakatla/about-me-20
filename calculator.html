@@ -38,22 +38,46 @@
             </form>
           </div>
         </nav>
+        <div class="calculator">
         <p><h1>ADDING TWO NUMBERS</h1></p>
         <p>num1 = <input type="text" id="num1" name="num1" value=""/></p>
         <p> num2 = <input type="text" id="num2" name="num2" value=""/></p>
-        <p><input type="button" name="Sumbit" value="TOTAL" onclick="javascript:addNumbers()"/></p>
+        <p><input type="button" name="Sumbit" id="button" value="TOTAL"/></p>
         <p> Answer = <input type="text" id="answer" name="answer" value=""/></p>
+        <p id = "joke_id"></p>
+       
         <footer class="container-fluid">
             &copy; 2019 Midhun Kandakatla
           </footer>
+        </div>
           <script language="javascript">
-              function addNumbers()
-              {
-                      var number1 = parseInt(document.getElementById("num1").value);
-                      var number2 = parseInt(document.getElementById("num2").value);
+            document.getElementById("button").addEventListener('click',function(){
+                      let number1 = parseInt(document.getElementById("num1").value);
+                      let number2 = parseInt(document.getElementById("num2").value);
+                      if(isNaN(number1 ) || isNaN(number2)){
+                        alert("Enter Only Numbers")
+                      }
                       var ansD = document.getElementById("answer");
                       ansD.value = number1 + number2;
-              }
+
+      $.ajax({
+      url: "http://api.icndb.com/jokes/random?limitTo=[nerdy]",
+      cache: false,
+      dataType: "json",
+      type: "GET",
+      success: function (result, success) {
+        document.getElementById('joke_id').innerHTML = 'Todays joke is: '
+        + result.value.joke;
+      },
+      error: function (result, success) {
+        console.log('error');
+      }
+    });
+            });
+              
+            
       </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+     
   </body>
 </html>

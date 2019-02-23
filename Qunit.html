@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>QUnit Testing</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.22.0.css">
+    <script src="https://code.jquery.com/qunit/qunit-2.6.2.js" integrity="sha256-72OhbBvECs6Z5vG0GfPqiyYvTf8vhdEVHKQcacIcIeM="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script>
+
+        function add(a, b) {
+            let number1 = parseInt(a);
+            let number2 = parseInt(b);
+            if (isNaN(number1) || isNaN(number2)) {
+                alert("Enter Only Numbers")
+            }
+            let ansD = number1 + number2;
+            return ansD;
+        }
+
+        QUnit.module("Add Function Testing")
+        QUnit.test("Test One", function (assert) {
+                var result = add(4, 8);
+                assert.equal(result, 12, "Added Successfully");
+            });
+            QUnit.test("Test Two", function (assert) {
+                var result = add(2, 4);
+                assert.equal(result, 6, "Added Successfully");
+            });
+            QUnit.test("Test Three", function (assert) {
+                var result = add(3,6);
+                assert.equal(result, 9, "Added Successfully");
+            });
+            QUnit.test("Test Four", function (assert) {
+                var result = add(15, 10);
+                assert.equal(result, 25, "Added Successfully");
+            });
+            QUnit.test("Test Five", function (assert) {
+                var result = add(40, 80);
+                assert.equal(result, 120, "Added Successfully");
+            });
+    </script>
+
+
+
+
+
+
+</body>
+
+
+
+
+</html>

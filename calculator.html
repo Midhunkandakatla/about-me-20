@@ -1,83 +1,100 @@
 <html>
-  <link rel="stylesheet" href="css/MyStyle.css">
-  <head>
-        <title>Add program</title>
-        
-        <meta name="author" content="Midhun Kandakatla">
+<link rel="stylesheet" href="css/MyStyle.css">
 
-        <!-- Bootstrap required meta tags-->
-        <meta charset="UTF8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      
-        <!-- Link to CSS-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-          crossorigin="anonymous">
-  </head>
-  <body class="bgimg">
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <a class="navbar-brand" href="index.html">Welcome</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="calculator.html">Calculator!</a>
-              </li>
-            </ul>
-            <form class="form-inline mt-2 mt-md-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-          </div>
-        </nav>
-        <div class="calculator">
-        <p><h1>ADDING TWO NUMBERS</h1></p>
-        <p>num1 = <input type="text" id="num1" name="num1" value=""/></p>
-        <p> num2 = <input type="text" id="num2" name="num2" value=""/></p>
-        <p><input type="button" name="Sumbit" id="button" value="TOTAL"/></p>
-        <p> Answer = <input type="text" id="answer" name="answer" value=""/></p>
-        <p id = "joke_id"></p>
-       
-        <footer class="container-fluid">
-            &copy; 2019 Midhun Kandakatla
-          </footer>
-        </div>
-          <script language="javascript">
-            document.getElementById("button").addEventListener('click',function(){
-                      let number1 = parseInt(document.getElementById("num1").value);
-                      let number2 = parseInt(document.getElementById("num2").value);
-                      if(isNaN(number1 ) || isNaN(number2)){
-                        alert("Enter Only Numbers")
-                      }
-                      var ansD = document.getElementById("answer");
-                      ansD.value = number1 + number2;
+<head>
+  <title>Add program</title>
 
-      $.ajax({
-      url: "http://api.icndb.com/jokes/random?limitTo=[nerdy]",
-      cache: false,
-      dataType: "json",
-      type: "GET",
-      success: function (result, success) {
-        document.getElementById('joke_id').innerHTML = 'Todays joke is: '
-        + result.value.joke;
-      },
-      error: function (result, success) {
-        console.log('error');
-      }
+  <meta name="author" content="Midhun Kandakatla">
+
+  <!-- Bootstrap required meta tags-->
+  <meta charset="UTF8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Link to CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+</head>
+
+<body class="bgimg">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="index.html">Welcome</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="calculator.html">Calculator!</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./Qunit.html">Qunit</a>
+        </li>
+      </ul>
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <div class="calculator">
+    <p>
+      <h1>ADDING TWO NUMBERS</h1>
+    </p>
+    <p>num1 = <input type="text" id="num1" name="num1" value="" /></p>
+    <p> num2 = <input type="text" id="num2" name="num2" value="" /></p>
+    <p><input type="button" name="Sumbit" id="button" value="TOTAL" /></p>
+    <p> Answer = <input type="text" id="answer" name="answer" value="" /></p>
+    <p id="joke_id"></p>
+
+    <footer class="container-fluid">
+      &copy; 2019 Midhun Kandakatla
+    </footer>
+  </div>
+  <script language="javascript">
+    document.getElementById("button").addEventListener('click', function () {
+      add(document.getElementById("num1").value,
+        document.getElementById("num2").value);
+      callAjax();
     });
-            });
-              
-            
-      </script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-     
-  </body>
+
+    function add(a, b) {
+      let number1 = parseInt(a);
+      let number2 = parseInt(b);
+      if (isNaN(number1) || isNaN(number2)) {
+        alert("Enter Only Numbers")
+      } else {
+        var ansD = document.getElementById("answer");
+        ansD.value = number1 + number2;
+      }
+    }
+
+    function callAjax() {
+      $.ajax({
+        url: "https://api.icndb.com/jokes/random?limitTo=[nerdy]",
+        cache: false,
+        dataType: "json",
+        type: "GET",
+        success: function (result, success) {
+          document.getElementById('joke_id').innerHTML = 'Todays joke is: '
+            + result.value.joke;
+        },
+        error: function (result, success) {
+          console.log('error');
+        }
+      });
+    }
+
+
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+</body>
+
 </html>

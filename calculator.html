@@ -51,6 +51,8 @@
     <p> num2 = <input type="text" id="num2" name="num2" value="" /></p>
     <p><input type="button" name="Sumbit" id="button" value="TOTAL" /></p>
     <p> Answer = <input type="text" id="answer" name="answer" value="" /></p>
+    <p><button id="button_local_storage" value="GetLocalStorageResults" >Get Local Values</button></p>
+    <p> Previous Result=<input type="text" id="prevanswer" name="answer" value="" /></p>
     <p id="joke_id"></p>
 
     <footer class="container-fluid">
@@ -58,10 +60,17 @@
     </footer>
   </div>
   <script language="javascript">
+    
     document.getElementById("button").addEventListener('click', function () {
       add(document.getElementById("num1").value,
         document.getElementById("num2").value);
       callAjax();
+    });
+
+
+    document.getElementById("button_local_storage").addEventListener('click',function(){
+      
+      document.getElementById("prevanswer").value = localStorage.getItem("answer")
     });
 
     function add(a, b) {
@@ -70,10 +79,15 @@
       if (isNaN(number1) || isNaN(number2)) {
         alert("Enter Only Numbers")
       } else {
-        var ansD = document.getElementById("answer");
-        ansD.value = number1 + number2;
+        result=number1+number2;
+        document.getElementById('answer').value=result;
+        localStorage.setItem("answer",result);
       }
+      
     }
+    /*document.getElementById('btn_retrieve').addEventListener("click",function(){
+document.getElementById("prevanswer").innerHTML=localStorage.getItem("answer");
+    });*/
 
     function callAjax() {
       $.ajax({
